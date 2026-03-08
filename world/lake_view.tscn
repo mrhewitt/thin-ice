@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://dqehvbroiglhi"]
+
+[ext_resource type="PackedScene" uid="uid://bbfogx7xwkxoe" path="res://entities/skater/skater.tscn" id="1_m25bo"]
+[ext_resource type="Script" uid="uid://dqfweq6u1sfeq" path="res://world/lake_view.gd" id="1_om1fn"]
+[ext_resource type="PackedScene" uid="uid://u2h2eiqd655w" path="res://world/items/zambonie_shed.tscn" id="1_sa1fn"]
+[ext_resource type="PackedScene" uid="uid://d1pimme7bk5xi" path="res://world/ui/ui_canvas_layer.tscn" id="3_dv3jx"]
+[ext_resource type="Texture2D" uid="uid://j574sjcv7v3b" path="res://assets/background.png" id="4_e5y32"]
+[ext_resource type="PackedScene" uid="uid://doe0vjtglsmbv" path="res://entities/icefisher/ice_fisher.tscn" id="4_otm30"]
+[ext_resource type="PackedScene" uid="uid://dikrel8svclv0" path="res://world/cracks/hole_crack.tscn" id="5_sa1fn"]
+[ext_resource type="PackedScene" uid="uid://ig28muqgwaj0" path="res://entities/player/player.tscn" id="6_om1fn"]
+[ext_resource type="PackedScene" uid="uid://duufnnjh4eubd" path="res://world/items/skater_spawn_point.tscn" id="6_qugek"]
+[ext_resource type="PackedScene" uid="uid://cwj8onvq1ly55" path="res://world/items/first_aid_point.tscn" id="8_te78g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5y32"]
+size = Vector2(1223, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ciise"]
+size = Vector2(1229, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udj4t"]
+size = Vector2(68, 837)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ihrn"]
+size = Vector2(79, 837)
+
+[node name="LakeView" type="Node2D" unique_id=9619093]
+script = ExtResource("1_om1fn")
+hole_scene = ExtResource("5_sa1fn")
+ice_fisher_scene = ExtResource("4_otm30")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2022956446]
+position = Vector2(576, 324)
+texture = ExtResource("4_e5y32")
+
+[node name="Bounds" type="Node2D" parent="." unique_id=1342189748]
+
+[node name="BottomWall" type="StaticBody2D" parent="Bounds" unique_id=1816142378]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/BottomWall" unique_id=1435471538]
+position = Vector2(585.5, 652.5)
+shape = SubResource("RectangleShape2D_e5y32")
+
+[node name="TopWall" type="StaticBody2D" parent="Bounds" unique_id=1656777634]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/TopWall" unique_id=1889777881]
+position = Vector2(582.5, -17.5)
+shape = SubResource("RectangleShape2D_ciise")
+
+[node name="LeftWall" type="StaticBody2D" parent="Bounds" unique_id=510726625]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/LeftWall" unique_id=374528346]
+position = Vector2(2, 353.5)
+shape = SubResource("RectangleShape2D_udj4t")
+
+[node name="RightWall" type="StaticBody2D" parent="Bounds" unique_id=1594283164]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds/RightWall" unique_id=494178167]
+position = Vector2(1162.5, 353.5)
+shape = SubResource("RectangleShape2D_0ihrn")
+
+[node name="SkaterSpawnPoint" parent="." unique_id=1207156967 instance=ExtResource("6_qugek")]
+position = Vector2(1144, 365)
+skater_scene = ExtResource("1_m25bo")
+
+[node name="ZambonieShed" parent="." unique_id=946463594 instance=ExtResource("1_sa1fn")]
+position = Vector2(577, -1)
+alert_color = Color(0.99609375, 0.3651886, 0.32295227, 1)
+charging_color = Color(0.9466563, 0.984375, 0.31915283, 1)
+
+[node name="Cracks" type="Node2D" parent="." unique_id=73579534]
+
+[node name="SkaterList" type="Node2D" parent="." unique_id=1313467877]
+
+[node name="PlayerMarker2D" type="Marker2D" parent="." unique_id=711570622]
+position = Vector2(579, 75)
+
+[node name="Player" parent="." unique_id=243000236 instance=ExtResource("6_om1fn")]
+position = Vector2(420, 138)
+
+[node name="UICanvasLayer" parent="." unique_id=1980675244 instance=ExtResource("3_dv3jx")]
+
+[node name="FirstAidPoint" parent="." unique_id=1660580706 instance=ExtResource("8_te78g")]
+position = Vector2(1135, 170)
+
+[node name="IceTimer" type="Timer" parent="." unique_id=1044982862]
+wait_time = 6.0
+
+[node name="FisherTimer" type="Timer" parent="." unique_id=1532613845]
+wait_time = 3.0
+one_shot = true
+
+[node name="RoundTimer" type="Timer" parent="." unique_id=2122757166]
+one_shot = true
+
+[connection signal="sinking" from="Player" to="." method="_on_player_sinking"]
+[connection signal="timeout" from="IceTimer" to="." method="_on_ice_timer_timeout"]
+[connection signal="timeout" from="FisherTimer" to="." method="_on_fisher_timer_timeout"]
+[connection signal="timeout" from="RoundTimer" to="." method="_on_round_timer_timeout"]

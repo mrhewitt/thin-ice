@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bbfogx7xwkxoe"]
+
+[ext_resource type="Script" uid="uid://b6krg5a0ysoxm" path="res://entities/skater/skater.gd" id="1_ensv3"]
+[ext_resource type="PackedScene" uid="uid://cdawyhyne0yoy" path="res://components/speech_bubble.tscn" id="2_cwlnp"]
+[ext_resource type="Texture2D" uid="uid://c4cb8phnxo63c" path="res://assets/skater-01.png" id="2_nwao6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atjgm"]
+
+[node name="Skater" type="CharacterBody2D" unique_id=227158077 groups=["skaters"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ensv3")
+speech_bubble_scene = ExtResource("2_cwlnp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1039383162]
+texture = ExtResource("2_nwao6")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=404586928]
+shape = SubResource("CircleShape2D_atjgm")
+
+[node name="Timer" type="Timer" parent="." unique_id=73271381]
+wait_time = 10.0
+one_shot = true
+
+[node name="TargetLine2D" type="Line2D" parent="." unique_id=1027165890]
+top_level = true
+default_color = Color(0.9921875, 0.1333797, 0.019378662, 1)
+
+[node name="AngleLine2D" type="Line2D" parent="." unique_id=1800871380]
+top_level = true
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

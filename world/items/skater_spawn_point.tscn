@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://duufnnjh4eubd"]
+
+[ext_resource type="Script" uid="uid://dyxe4klkvmjbw" path="res://world/items/skater_spawn_point.gd" id="1_ctstf"]
+[ext_resource type="Texture2D" uid="uid://dps2722s5xtg5" path="res://assets/skater_entrance.png" id="1_td0lu"]
+
+[node name="SkaterSpawnPoint" type="Node2D" unique_id=1207156967 node_paths=PackedStringArray("home_marker")]
+script = ExtResource("1_ctstf")
+home_marker = NodePath("HomeMarker2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1268559744]
+texture = ExtResource("1_td0lu")
+
+[node name="HomeMarker2D" type="Marker2D" parent="." unique_id=986402574]
+position = Vector2(-19, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=877838901]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

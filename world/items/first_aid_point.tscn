@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cwj8onvq1ly55"]
+
+[ext_resource type="Texture2D" uid="uid://dj1vtpb45hfg5" path="res://assets/first_aid.png" id="1_068nu"]
+[ext_resource type="Script" uid="uid://dradv5ok61tpd" path="res://world/items/first_aid_point.gd" id="1_iosda"]
+[ext_resource type="PackedScene" uid="uid://bwvk5eads8xmo" path="res://components/highlight_circle.tscn" id="2_bawja"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bawja"]
+radius = 54.0
+height = 146.0
+
+[node name="FirstAidPoint" type="Node2D" unique_id=1660580706]
+script = ExtResource("1_iosda")
+
+[node name="HighlightCircle" parent="." unique_id=1166258751 instance=ExtResource("2_bawja")]
+highlight_color = Color(0.4643097, 0.80859375, 0.4643097, 1)
+
+[node name="Patients" type="Node2D" parent="." unique_id=98330051]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=629075107]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=427497413]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bawja")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1084440686]
+texture = ExtResource("1_068nu")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://b87le0n1mkko6"]
+
+[ext_resource type="FontFile" uid="uid://b7liv5wcgbu4m" path="res://assets/realwood/Realwood Inline.otf" id="1_8u3kw"]
+
+[resource]
+font = ExtResource("1_8u3kw")
+font_size = 35

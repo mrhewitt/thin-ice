@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://dpqqnyn8jdddn"]
+
+[ext_resource type="Script" uid="uid://pmjxwmgwsuee" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://brmxnw3eao8ps" path="res://assets/36359.jpg" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dqehvbroiglhi" path="res://world/lake_view.tscn" id="2_lquwl"]
+[ext_resource type="FontFile" uid="uid://b8k6xmw5h276f" path="res://assets/snow_kei/Snow Kei.ttf" id="3_lquwl"]
+[ext_resource type="FontFile" uid="uid://b51d713r66237" path="res://assets/icecold_3/Icecold.ttf" id="4_1bvp3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+content_margin_left = 48.0
+content_margin_top = 18.0
+content_margin_right = 48.0
+bg_color = Color(0.5686275, 0.69803923, 0.73333335, 0.5647059)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
+content_margin_left = 48.0
+content_margin_top = 18.0
+content_margin_right = 48.0
+bg_color = Color(0.02745098, 0.31764707, 0.39607844, 0.74509805)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+content_margin_left = 48.0
+content_margin_top = 18.0
+content_margin_right = 48.0
+bg_color = Color(0.26245117, 0.58414125, 0.671875, 0.5647059)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Main" type="Node2D" unique_id=981446287]
+script = ExtResource("1_h2yge")
+game_scene = ExtResource("2_lquwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1077682913]
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="CanvasLayer" unique_id=396770411]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1bvp3")
+expand_mode = 1
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer" unique_id=219462058]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.5
+offset_top = -193.5
+offset_right = 190.5
+offset_bottom = 193.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0.2, 0.40784314, 0.43529412, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 26
+theme_override_constants/outline_size = -2
+theme_override_constants/shadow_outline_size = 18
+theme_override_fonts/font = ExtResource("3_lquwl")
+theme_override_font_sizes/font_size = 168
+text = "THIN
+ICE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1572041856]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -353.0
+offset_top = -121.0
+offset_right = 353.0
+offset_bottom = 121.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/MenuContainer" unique_id=1960065853]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_lquwl")
+theme_override_font_sizes/font_size = 128
+text = "THIN ICE"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/MenuContainer" unique_id=511989465]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_272bh")
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/MenuContainer" unique_id=1232465302]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = SubResource("StyleBoxFlat_lquwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7mycd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_272bh")
+text = "QUIT"
+
+[node name="FadeRect" type="ColorRect" parent="CanvasLayer" unique_id=1581830708]
+visible = false
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="CanvasLayer/MenuContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuContainer/QuitButton" to="." method="_on_quit_button_pressed"]

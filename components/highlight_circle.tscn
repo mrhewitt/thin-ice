@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bwvk5eads8xmo"]
+
+[ext_resource type="Script" uid="uid://wqjn08kesfl5" path="res://components/highlight_circle.gd" id="1_xjs1a"]
+
+[node name="HighlightCircle" type="Node2D" unique_id=1166258751]
+script = ExtResource("1_xjs1a")

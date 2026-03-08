@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://t1jxqg7qscn6"]
+
+[ext_resource type="Script" uid="uid://b1vamlaf5h3wn" path="res://entities/skater/skater_path.gd" id="1_lbs70"]
+
+[sub_resource type="Curve2D" id="Curve2D_prsww"]
+
+[node name="SkaterPath" type="Path2D" unique_id=362511375]
+curve = SubResource("Curve2D_prsww")
+script = ExtResource("1_lbs70")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=799182937]
+loop = false

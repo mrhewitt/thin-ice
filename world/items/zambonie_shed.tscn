@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://u2h2eiqd655w"]
+
+[ext_resource type="Script" uid="uid://cl7cuht3t5pl" path="res://world/items/zambonie_shed.gd" id="1_0w6gg"]
+[ext_resource type="PackedScene" uid="uid://bwvk5eads8xmo" path="res://components/highlight_circle.tscn" id="2_74dfy"]
+[ext_resource type="Texture2D" uid="uid://cge3b1tg83egu" path="res://assets/zambonie_shed.png" id="3_uew72"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0w6gg"]
+radius = 91.08787
+
+[node name="ZambonieShed" type="Node2D" unique_id=946463594]
+script = ExtResource("1_0w6gg")
+alert_color = Color(0.9375, 0.4489648, 0.41381836, 1)
+charging_color = Color(0.74947965, 0.96484375, 0.4334259, 1)
+
+[node name="HighlightCircle" parent="." unique_id=1166258751 instance=ExtResource("2_74dfy")]
+position = Vector2(0, 15)
+area_radius = 90.0
+highlight_color = Color(0.984375, 0.51850235, 0.48449707, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293197159]
+position = Vector2(-2, 54)
+texture = ExtResource("3_uew72")
+
+[node name="ChargingArea2D" type="Area2D" parent="." unique_id=1557503299]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChargingArea2D" unique_id=1362890592]
+position = Vector2(0, 15)
+shape = SubResource("CircleShape2D_0w6gg")
+debug_color = Color(0.9958958, 0.33889067, 0.44664538, 0.41960785)
+
+[connection signal="body_entered" from="ChargingArea2D" to="." method="_on_charging_area_2d_body_entered"]
+[connection signal="body_exited" from="ChargingArea2D" to="." method="_on_charging_area_2d_body_exited"]
