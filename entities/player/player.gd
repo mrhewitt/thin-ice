@@ -123,7 +123,7 @@ func _physics_process(delta: float) -> void:
 				GameManager.game_over.emit( GameManager.GameOverCondition.RUN_FLAT )
 				
 		# loose 5% + 0.75% per towee charge at full speed / second for prototype
-		charge = max( charge - (((0.025+(0.0075*get_towee_count())) * (speed/max_speed)) * delta), 0 )
+		charge = max( charge - (((0.025+(0.0075*get_towee_count())) * (abs(speed)/max_speed)) * delta), 0 )
 				
 		velocity = transform.x * speed * delta
 		if move_and_collide(velocity):
