@@ -115,7 +115,7 @@ func _physics_process(delta: float) -> void:
 				rotation += direction * PI * 1 * delta
 		else:
 			if not run_flat:
-				SfxPlayer.play(SfxPlayer.POWER_DOWN_004)
+				SoundPlayer.play( preload("uid://dgbt3lcxs4ei") )
 			speed = lerpf( speed, 0, delta )
 			run_flat = true
 			if speed < 5:

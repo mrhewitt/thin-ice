@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://doe0vjtglsmbv"]
 
-[ext_resource type="Texture2D" uid="uid://b8jyw5grqqxi6" path="res://assets/ice-fisher.png" id="1_7xs0d"]
+[ext_resource type="Texture2D" uid="uid://b8jyw5grqqxi6" path="res://assets/sprites/ice-fisher.png" id="1_7xs0d"]
 [ext_resource type="Script" uid="uid://c4bche1j7rxex" path="res://entities/icefisher/ice_fisher.gd" id="1_u76qp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u76qp"]

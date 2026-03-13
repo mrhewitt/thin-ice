@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6krg5a0ysoxm" path="res://entities/skater/skater.gd" id="1_ensv3"]
 [ext_resource type="PackedScene" uid="uid://cdawyhyne0yoy" path="res://components/speech_bubble.tscn" id="2_cwlnp"]
-[ext_resource type="Texture2D" uid="uid://c4cb8phnxo63c" path="res://assets/skater-01.png" id="2_nwao6"]
+[ext_resource type="Texture2D" uid="uid://c4cb8phnxo63c" path="res://assets/sprites/skater-01.png" id="2_nwao6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_atjgm"]
 

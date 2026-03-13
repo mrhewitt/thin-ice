@@ -1,10 +1,11 @@
-extends Node2D
-class_name LakeView
+class_name LakeView extends GameScene
+
 
 signal game_over
 
 @export var hole_scene: PackedScene
 @export var ice_fisher_scene: PackedScene
+@export var game_music: AudioStreamResource
 
 @onready var cracks: Node2D = $Cracks
 @onready var skater_spawn_point: SkaterSpawnPoint = $SkaterSpawnPoint
@@ -30,7 +31,8 @@ var end_on_no_stuck: bool = false
 
 
 func _ready() -> void:
-	MusicPlayer.play_game_track()
+	super()
+	MusicPlayer.play(game_music)
 	
 	skater_spawn_point.skaters_spawned.connect( _on_new_skaters )
 	GameManager.player = player
@@ -142,8 +144,9 @@ func _on_game_over( reason: GameManager.GameOverCondition ) -> void:
 	ui_canvas_layer.game_over(reason)
 	player.state = Player.PlayerState.STOPPING
 	clear_level()
-	await get_tree().create_timer(3)
-	game_over.emit()
+	await get_tree().create_timer(3).timeout
+	# tell state machine we are done and it must move on
+	goto_return_state.emit()
 	
 
 ## Ice timer determines if a skater creates a new crack in the ice

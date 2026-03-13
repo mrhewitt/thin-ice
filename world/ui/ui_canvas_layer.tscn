@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://d15lnksiqoy4w" path="res://world/ui/whistle_button.tscn" id="1_gwsq5"]
 [ext_resource type="Script" uid="uid://dypaedb87gg07" path="res://world/ui/ui_canvas_layer.gd" id="1_w6dde"]
 [ext_resource type="Texture2D" uid="uid://cyygd6t5cxhmg" path="res://assets/wood-border.png" id="2_ahgdk"]
-[ext_resource type="FontFile" uid="uid://d3q7s1a633jbg" path="res://assets/ice_cold_lh/Ice-Cold-Colour-LH.otf" id="3_1oo3c"]
+[ext_resource type="FontFile" uid="uid://d3q7s1a633jbg" path="res://assets/fonts/ice_cold_lh/Ice-Cold-Colour-LH.otf" id="3_1oo3c"]
 [ext_resource type="Texture2D" uid="uid://hp70pa6gcoid" path="res://assets/big-font-hole.png" id="3_mmaa4"]
 [ext_resource type="LabelSettings" uid="uid://b87le0n1mkko6" path="res://resources/ui_board_label.tres" id="3_yfocy"]
-[ext_resource type="FontFile" uid="uid://bvi7m0eehno8r" path="res://assets/realwood/Realwood Regular.otf" id="5_bne4u"]
+[ext_resource type="FontFile" uid="uid://bvi7m0eehno8r" path="res://assets/fonts/realwood/Realwood Regular.otf" id="5_bne4u"]
 [ext_resource type="Texture2D" uid="uid://e0136u5h5uis" path="res://assets/charge_meter-bk.png" id="5_qjo4m"]
 [ext_resource type="Texture2D" uid="uid://d02m1jho8ubc4" path="res://assets/progress_bk.png" id="5_x6j2e"]
 [ext_resource type="Texture2D" uid="uid://bh8lk6pbdtuw8" path="res://assets/charge_meter.png" id="6_3emlw"]
-[ext_resource type="FontFile" uid="uid://b51d713r66237" path="res://assets/icecold_3/Icecold.ttf" id="8_0l5sc"]
+[ext_resource type="FontFile" uid="uid://b51d713r66237" path="res://assets/fonts/icecold_3/Icecold.ttf" id="8_0l5sc"]
 
 [node name="UICanvasLayer" type="CanvasLayer" unique_id=1980675244]
 script = ExtResource("1_w6dde")
@@ -82,10 +82,14 @@ offset_bottom = 105.0
 
 [node name="WhistleButton" parent="." unique_id=1089569693 instance=ExtResource("1_gwsq5")]
 anchors_preset = 3
-offset_left = -85.0
-offset_top = -64.0
-offset_right = -21.0
-offset_bottom = -16.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = -106.0
+offset_right = -13.0
+offset_bottom = -10.0
 
 [node name="ChargeProgressBar" type="TextureProgressBar" parent="." unique_id=1583671176]
 unique_name_in_owner = true

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ig28muqgwaj0"]
 
 [ext_resource type="Script" uid="uid://by101f6fvcstb" path="res://entities/player/player.gd" id="1_symyc"]
-[ext_resource type="Texture2D" uid="uid://cyl2axmgl4o1q" path="res://assets/zambonie.png" id="2_abrql"]
+[ext_resource type="Texture2D" uid="uid://cyl2axmgl4o1q" path="res://assets/sprites/zambonie.png" id="2_abrql"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_symyc"]
 radius = 17.0

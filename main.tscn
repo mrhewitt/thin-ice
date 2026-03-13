@@ -1,42 +1,113 @@
-[gd_scene format=3 uid="uid://dpqqnyn8jdddn"]
+[gd_scene format=3 uid="uid://d2kc0whevb7hj"]
 
-[ext_resource type="Script" uid="uid://pmjxwmgwsuee" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="Texture2D" uid="uid://brmxnw3eao8ps" path="res://assets/36359.jpg" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://bocryk0y4yxm7" path="res://addons/godot-jam-template/game/main_template.gd" id="1_iwr8i"]
+[ext_resource type="Script" uid="uid://dj8vur1twdeoc" path="res://addons/godot-jam-template/game/game-state/game_state_machine.gd" id="2_jbagu"]
 [ext_resource type="PackedScene" uid="uid://dqehvbroiglhi" path="res://world/lake_view.tscn" id="2_lquwl"]
-[ext_resource type="FontFile" uid="uid://b8k6xmw5h276f" path="res://assets/snow_kei/Snow Kei.ttf" id="3_lquwl"]
-[ext_resource type="FontFile" uid="uid://b51d713r66237" path="res://assets/icecold_3/Icecold.ttf" id="4_1bvp3"]
+[ext_resource type="FontFile" uid="uid://b8k6xmw5h276f" path="res://assets/fonts/snow_kei/Snow Kei.ttf" id="3_lquwl"]
+[ext_resource type="Script" uid="uid://cv3fdd1kuyduj" path="res://addons/godot-jam-template/game/game-state/game_state_splash_screens.gd" id="3_yx3et"]
+[ext_resource type="FontFile" uid="uid://b51d713r66237" path="res://assets/fonts/icecold_3/Icecold.ttf" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://b4y45h1uj77qq" path="res://addons/godot-jam-template/components/splash_screen.gd" id="4_r35so"]
+[ext_resource type="Texture2D" uid="uid://ddgngx48l68o" path="res://addons/godot-jam-template/assets/logo-splash.png" id="5_jqmxe"]
+[ext_resource type="Resource" uid="uid://csfd5p7llfn7i" path="res://addons/godot-jam-template/resources/logo_splash_music.tres" id="5_vivmo"]
+[ext_resource type="Texture2D" uid="uid://brmxnw3eao8ps" path="res://assets/backgrounds/36359.jpg" id="6_dg77c"]
+[ext_resource type="Script" uid="uid://cb7rba50kla14" path="res://addons/godot-jam-template/game/game-state/game_state_menu.gd" id="6_th1w5"]
+[ext_resource type="Shader" uid="uid://b7i1epahp7e8h" path="res://addons/godot-shader-library/shaders/diamond_transition.gdshader" id="6_yaehf"]
+[ext_resource type="Script" uid="uid://c2inws6cdbcxx" path="res://addons/godot-jam-template/ui/buttons/play_button.gd" id="7_vosa4"]
+[ext_resource type="Resource" uid="uid://hnjanwfm7ttn" path="res://resources/music/menu_music.tres" id="8_2cqfq"]
+[ext_resource type="Shader" uid="uid://bagkb5s2dsiy5" path="res://addons/godot-shader-library/shaders/pixel_dissolve_wave.gdshader" id="8_cegan"]
+[ext_resource type="Script" uid="uid://d1gl57aphnkkk" path="res://addons/godot-jam-template/ui/buttons/options_button.gd" id="8_pf3sp"]
+[ext_resource type="Texture2D" uid="uid://dmnvo7ur1mpl1" path="res://addons/godot-jam-template/assets/logo-games.png" id="9_82xsv"]
+[ext_resource type="Script" uid="uid://xx22qyuapr8q" path="res://addons/godot-jam-template/ui/buttons/quit_button.gd" id="9_imcmr"]
+[ext_resource type="Script" uid="uid://dge31ko47i0vl" path="res://addons/godot-jam-template/game/game-state/game_state_play.gd" id="10_pnxv1"]
+[ext_resource type="Resource" uid="uid://dwr4tkrh2q8pj" path="res://addons/godot-jam-template/resources/transitions/diamond_transition.tres" id="12_82xsv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
-content_margin_left = 48.0
-content_margin_top = 18.0
-content_margin_right = 48.0
-bg_color = Color(0.5686275, 0.69803923, 0.73333335, 0.5647059)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_074og"]
+shader = ExtResource("6_yaehf")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 10.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mycd"]
-content_margin_left = 48.0
-content_margin_top = 18.0
-content_margin_right = 48.0
-bg_color = Color(0.02745098, 0.31764707, 0.39607844, 0.74509805)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+[sub_resource type="Animation" id="Animation_cegan"]
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 4.75, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
+[sub_resource type="Animation" id="Animation_82xsv"]
+resource_name = "wipe_effect"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 2.25, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_getpj"]
+_data = {
+&"RESET": SubResource("Animation_cegan"),
+&"wipe_effect": SubResource("Animation_82xsv")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_getpj"]
+shader = ExtResource("8_cegan")
+shader_parameter/progress = 1.0
+shader_parameter/texture_size = Vector2(0, 512)
+shader_parameter/float_dist = 6.0
+shader_parameter/progress_rand_range = 0.1
+
+[sub_resource type="Animation" id="Animation_ryguw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_d13ii"]
+resource_name = "eff"
+length = 5.0666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.5333333, 4, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1u8w0"]
+_data = {
+&"RESET": SubResource("Animation_ryguw"),
+&"eff": SubResource("Animation_d13ii")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
 content_margin_left = 48.0
 content_margin_top = 18.0
 content_margin_right = 48.0
@@ -51,100 +122,182 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[node name="Main" type="Node2D" unique_id=981446287]
-script = ExtResource("1_h2yge")
-game_scene = ExtResource("2_lquwl")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vivmo"]
+content_margin_left = 48.0
+content_margin_top = 18.0
+content_margin_right = 48.0
+bg_color = Color(0.5686275, 0.69803923, 0.73333335, 0.5647059)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1077682913]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cqfq"]
+content_margin_left = 48.0
+content_margin_top = 18.0
+content_margin_right = 48.0
+bg_color = Color(0.02745098, 0.31764707, 0.39607844, 0.74509805)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
-[node name="BackgroundTextureRect" type="TextureRect" parent="CanvasLayer" unique_id=396770411]
+[sub_resource type="Theme" id="Theme_yaehf"]
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("4_1bvp3")
+Button/styles/hover = SubResource("StyleBoxFlat_w48qg")
+Button/styles/normal = SubResource("StyleBoxFlat_vivmo")
+Button/styles/pressed = SubResource("StyleBoxFlat_2cqfq")
+
+[node name="Main" type="Node" unique_id=1475655519]
+script = ExtResource("1_iwr8i")
+metadata/_custom_type_script = "uid://bocryk0y4yxm7"
+
+[node name="GameStateMachine" type="Node" parent="." unique_id=1392426621]
+script = ExtResource("2_jbagu")
+metadata/_custom_type_script = "uid://dj8vur1twdeoc"
+
+[node name="GameStateSplashScreens" type="Node" parent="GameStateMachine" unique_id=1063501137]
+script = ExtResource("3_yx3et")
+metadata/_custom_type_script = "uid://cv3fdd1kuyduj"
+
+[node name="LogoSplashScreen" type="Control" parent="GameStateMachine/GameStateSplashScreens" unique_id=923559744]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_1bvp3")
+script = ExtResource("4_r35so")
+display_time = 5.5
+music = ExtResource("5_vivmo")
+metadata/_custom_type_script = "uid://b4y45h1uj77qq"
+
+[node name="TextureRect" type="TextureRect" parent="GameStateMachine/GameStateSplashScreens/LogoSplashScreen" unique_id=982316011]
+material = SubResource("ShaderMaterial_074og")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jqmxe")
 expand_mode = 1
 
-[node name="TitleLabel" type="Label" parent="CanvasLayer" unique_id=219462058]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -190.5
-offset_top = -193.5
-offset_right = 190.5
-offset_bottom = 193.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0.2, 0.40784314, 0.43529412, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 26
-theme_override_constants/outline_size = -2
-theme_override_constants/shadow_outline_size = 18
-theme_override_fonts/font = ExtResource("3_lquwl")
-theme_override_font_sizes/font_size = 168
-text = "THIN
-ICE"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameStateMachine/GameStateSplashScreens/LogoSplashScreen/TextureRect" unique_id=677160054]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_getpj")
+autoplay = &"RESET"
 
-[node name="MenuContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1572041856]
+[node name="TextureRect" type="TextureRect" parent="GameStateMachine/GameStateSplashScreens/LogoSplashScreen/TextureRect" unique_id=622369214]
+material = SubResource("ShaderMaterial_getpj")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = -578.0
+offset_right = -110.0
+offset_bottom = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("9_82xsv")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameStateMachine/GameStateSplashScreens/LogoSplashScreen/TextureRect/TextureRect" unique_id=1666211174]
+libraries/ = SubResource("AnimationLibrary_1u8w0")
+autoplay = &"eff"
+
+[node name="GameStateMenu" type="Node" parent="GameStateMachine" unique_id=641836267]
+script = ExtResource("6_th1w5")
+state_music = ExtResource("8_2cqfq")
+enter_transition = ExtResource("12_82xsv")
+metadata/_custom_type_script = "uid://cb7rba50kla14"
+
+[node name="Theme" type="Control" parent="GameStateMachine/GameStateMenu" unique_id=443118264]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -353.0
-offset_top = -121.0
-offset_right = 353.0
-offset_bottom = 121.0
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 32
-alignment = 1
+theme = SubResource("Theme_yaehf")
 
-[node name="Label" type="Label" parent="CanvasLayer/MenuContainer" unique_id=1960065853]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="GameStateMachine/GameStateMenu/Theme" unique_id=843711932]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_dg77c")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GameStateMachine/GameStateMenu/Theme/TextureRect" unique_id=1343559014]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -290.0
+offset_top = 64.0
+offset_right = 290.0
+offset_bottom = 147.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_lquwl")
 theme_override_font_sizes/font_size = 128
 text = "THIN ICE"
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/MenuContainer" unique_id=511989465]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("4_1bvp3")
-theme_override_font_sizes/font_size = 96
-theme_override_styles/normal = SubResource("StyleBoxFlat_lquwl")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7mycd")
-theme_override_styles/hover = SubResource("StyleBoxFlat_272bh")
-text = "PLAY"
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/MenuContainer" unique_id=1232465302]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("4_1bvp3")
-theme_override_font_sizes/font_size = 96
-theme_override_styles/normal = SubResource("StyleBoxFlat_lquwl")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7mycd")
-theme_override_styles/hover = SubResource("StyleBoxFlat_272bh")
-text = "QUIT"
-
-[node name="FadeRect" type="ColorRect" parent="CanvasLayer" unique_id=1581830708]
-visible = false
-z_index = 100
-anchors_preset = 15
-anchor_right = 1.0
+[node name="MenuVBoxContainer" type="VBoxContainer" parent="GameStateMachine/GameStateMenu/Theme" unique_id=574117606]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -221.0
+offset_right = 170.0
+offset_bottom = -96.0
 grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+grow_vertical = 0
+theme_override_constants/separation = 16
 
-[connection signal="pressed" from="CanvasLayer/MenuContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/MenuContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="PlayButton" type="Button" parent="GameStateMachine/GameStateMenu/Theme/MenuVBoxContainer" unique_id=145714395 node_paths=PackedStringArray("play_state")]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+text = "PLAY"
+script = ExtResource("7_vosa4")
+play_state = NodePath("../../../../GameStatePlay")
+
+[node name="OptionsButton" type="Button" parent="GameStateMachine/GameStateMenu/Theme/MenuVBoxContainer" unique_id=1316257115]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+text = "SETTINGS"
+script = ExtResource("8_pf3sp")
+
+[node name="QuitButton" type="Button" parent="GameStateMachine/GameStateMenu/Theme/MenuVBoxContainer" unique_id=218339456]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "QUIT"
+script = ExtResource("9_imcmr")
+
+[node name="GameStatePlay" type="Node" parent="GameStateMachine" unique_id=753930524 node_paths=PackedStringArray("return_state")]
+script = ExtResource("10_pnxv1")
+return_state = NodePath("../GameStateMenu")
+game_scene = ExtResource("2_lquwl")
+exit_transition = ExtResource("12_82xsv")
+metadata/_custom_type_script = "uid://dge31ko47i0vl"

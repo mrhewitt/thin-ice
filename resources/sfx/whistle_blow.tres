@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioStreamResource" format=3 uid="uid://wq2pmvp3ced2"]
+
+[ext_resource type="AudioStream" uid="uid://b0gn4685rxalr" path="res://assets/SFX/Whistle-001.wav" id="1_n81ss"]
+[ext_resource type="Script" uid="uid://bufkyj6d7vlup" path="res://addons/godot-jam-template/audio/audio_stream_resource.gd" id="1_u1dxs"]
+
+[resource]
+script = ExtResource("1_u1dxs")
+audio_file = ExtResource("1_n81ss")
+metadata/_custom_type_script = "uid://bufkyj6d7vlup"

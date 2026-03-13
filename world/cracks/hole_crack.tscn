@@ -1,51 +1,24 @@
 [gd_scene format=3 uid="uid://dikrel8svclv0"]
 
 [ext_resource type="Script" uid="uid://dvmmc3283ilpm" path="res://world/cracks/hole_crack.gd" id="1_lt2cj"]
+[ext_resource type="StyleBox" uid="uid://b3bu7snk5pqnt" path="res://resources/ice_hole_progress_bk.tres" id="2_muoaa"]
+[ext_resource type="StyleBox" uid="uid://xunyohae00uh" path="res://resources/ice_hole_progress_fill.tres" id="3_n3hc4"]
+[ext_resource type="Script" uid="uid://h5m4v8opibfj" path="res://addons/godot-jam-template/components/floating_progress_bar.gd" id="4_v652j"]
 
 [sub_resource type="Curve" id="Curve_lt2cj"]
 _data = [Vector2(0.010638297, 0.34525543), 0.0, 0.0, 0, 0, Vector2(0.32624114, 0.4116788), 0.50173396, 0.50173396, 0, 0, Vector2(0.5496454, 0.59197074), 1.9377296, 1.9377296, 0, 0, Vector2(0.6985816, 0.99999994), 6.0816035, 1.9778458, 0, 0]
 point_count = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt2cj"]
-bg_color = Color(0.7607843, 0.8980392, 0.92156863, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.01991272, 0.030124903, 0.11328125, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xq0wf"]
-bg_color = Color(0.015686275, 0.48235294, 0.64705884, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_bottom = 1
-border_color = Color(0.009735107, 0.020380259, 0.04296875, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
 [node name="HoleCrack" type="Node2D" unique_id=1102734414 groups=["cracks"]]
 script = ExtResource("1_lt2cj")
-min_hole_radius = null
-max_hole_radius = null
-hole_radius = null
-rate_of_cracking = null
-rate_of_repair = null
-crack_stages = null
 crack_speed_curve = SubResource("Curve_lt2cj")
-auto_crack_speed = null
 water_color = Color(0.27058825, 0.64705884, 0.74509805, 1)
 crack_color = Color(0.12941177, 0.31764707, 0.34509805, 1)
 outline_color = Color(0.58431375, 0.9764706, 0.99215686, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=1074933262]
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1864411107]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2116422125]
 visible = false
 top_level = true
 z_index = 10
@@ -54,10 +27,12 @@ offset_left = -32.0
 offset_right = 32.0
 offset_bottom = 12.0
 pivot_offset = Vector2(32, 6)
-theme_override_styles/background = SubResource("StyleBoxFlat_lt2cj")
-theme_override_styles/fill = SubResource("StyleBoxFlat_xq0wf")
-value = 43.0
+theme_override_styles/background = ExtResource("2_muoaa")
+theme_override_styles/fill = ExtResource("3_n3hc4")
+value = 1.0
 rounded = true
 show_percentage = false
+script = ExtResource("4_v652j")
+metadata/_custom_type_script = "uid://h5m4v8opibfj"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

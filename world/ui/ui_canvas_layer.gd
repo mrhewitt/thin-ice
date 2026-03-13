@@ -1,6 +1,9 @@
 extends CanvasLayer
 class_name UICanvasLayer
 
+const HALF_CHARGE_SFX = preload("uid://dx72o2i50w0f")
+const LOW_CHARGE_ALAWM = preload("uid://cv01bt2vy7hm8")
+
 @onready var skaters_rescued_label: Label = %SkatersRescuedLabel
 @onready var charge_progress_bar: TextureProgressBar = %ChargeProgressBar
 @onready var alert_label: Label = $AlertLabel
@@ -45,11 +48,8 @@ func show_round_start() -> void:
 	round_start_label.text = "ROUND %s" % GameManager.round_number
 	round_start_label.visible = true	
 	round_start_label.modulate.a = 1
-	var tween := create_tween()
-	tween.tween_interval(1)
-	tween.tween_property(round_start_label, "modulate:a", 0.0, 1)
-	tween.tween_property(round_start_label,"visible", false, 0)
-	
+	TweenHelper.fadeout( round_start_label, 1, 1 )
+
 	
 func _on_towline_full() -> void:
 	show_alert("Towline Full!!")
@@ -76,9 +76,9 @@ func show_alert(msg: String)-> void:
 func _on_charge_updated(charge: float) -> void:
 	if last_charge_level > 0.5 and charge < 0.5 and charge > 0.25:
 		show_alert("50% Charge!")
-		SfxPlayer.play(SfxPlayer.BEEP)
+		SoundPlayer.play(HALF_CHARGE_SFX)
 	if last_charge_level > 0.25 and charge < 0.25:
 		show_alert("LOW CHARGE!!")
-		SfxPlayer.play(SfxPlayer.ALARM)
+		SoundPlayer.play(LOW_CHARGE_ALAWM)
 	last_charge_level = charge
 	charge_progress_bar.value = 100 * charge

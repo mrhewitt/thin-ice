@@ -1,6 +1,7 @@
-extends CharacterBody2D
-class_name Skater
+class_name Skater extends CharacterBody2D
 ##
+
+const WATER_SPLASH_SFX = preload("uid://jtwlrgr0vtyj")
 
 const MIN_DISTANCE_TO_TARGET = 5
 
@@ -78,7 +79,7 @@ func check_for_hole() -> void:
 					# ....and go to the stuck state
 					state = SkaterState.STUCK
 					last_hole = hole
-					SfxPlayer.play(SfxPlayer.SPLASH)
+					SoundPlayer.play(WATER_SPLASH_SFX)
 					call_for_help()
 					timer.start(drown_time)
 				return

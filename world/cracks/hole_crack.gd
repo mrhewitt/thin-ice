@@ -1,6 +1,10 @@
 extends Node2D
 class_name HoleCrack
 
+const SMALL_CRACK_SFX = preload("uid://dj7840nh7fh8d")
+const MEDIUM_CRACK_SFX = preload("uid://v38uxke82gfa")
+const LARGE_CRACK_SFX = preload("uid://bylpf6t6irfuh")
+
 ## how many radial lines there are (so 1 every 10 degrees)
 const TOTAL_CRACKS = 10
 
@@ -33,7 +37,7 @@ const TOTAL_CRACKS = 10
 @export var crack_color: Color 	
 @export var outline_color: Color
 
-@onready var progress_bar: ProgressBar = $ProgressBar
+@onready var progress_bar: FloatingProgressBar = $ProgressBar
 @onready var timer: Timer = $Timer
 @onready var crack_stage: int = crack_stages
 
@@ -42,7 +46,7 @@ var current_radius: float
 var crack_progress: float = 0
 var hole_polygon: Polygon2D 
 var is_a_hole: bool = false
-var progress_bar_tween: Tween = null
+#var progress_bar_tween: Tween = null
 
 
 func _ready() -> void:
@@ -69,18 +73,10 @@ func _process(delta: float) -> void:
 					return
 					
 			# show a bar so player can see...
-			if progress_bar_tween != null:
-				progress_bar_tween.kill()
-			progress_bar.visible = true
-			progress_bar.modulate.a = 1.0
-			progress_bar.position = global_position - Vector2(32,hole_radius) 	
-			progress_bar.value = (((crack_stages - crack_stage) + crack_progress) / crack_stages) * 100
-			
-		elif progress_bar.visible and (progress_bar_tween == null or not progress_bar_tween.is_running()):
-			progress_bar_tween = create_tween()
-			progress_bar_tween.tween_interval(0.5)
-			progress_bar_tween.tween_property(progress_bar,"modulate:a",0.0,0.5)
-			progress_bar_tween.tween_property(progress_bar,"visible",false,0)
+			progress_bar.position_offset = Vector2(-32, -hole_radius - 8 )
+			progress_bar.set_and_show( (((crack_stages - crack_stage) + crack_progress) / crack_stages) * 100)
+		else:
+			progress_bar.fadeout()
 
 		# check all skaters in range, and for each skater move the crack
 		# state on toward the next level
@@ -127,7 +123,7 @@ func create_crack() -> void:
 	if auto_crack_speed:	
 		timer.start(auto_crack_speed)	
 
-	SfxPlayer.play( SfxPlayer.SMALL_CRACK )
+	SoundPlayer.play( SMALL_CRACK_SFX )
 	
 	
 func shrink_crack() -> bool:
@@ -148,10 +144,10 @@ func shrink_crack() -> bool:
 func expand_crack() -> void:
 	crack_stage -= 1
 	if crack_stage == 0:
-		SfxPlayer.play( SfxPlayer.LARGE_CRACK )
+		SoundPlayer.play( LARGE_CRACK_SFX )
 		become_a_hole()
 	else:
-		SfxPlayer.play( SfxPlayer.MEDIUM_CRACK )
+		SoundPlayer.play( MEDIUM_CRACK_SFX )
 		# made no progress yet on this crack
 		crack_progress = 0	
 		current_radius = hole_radius/crack_stage

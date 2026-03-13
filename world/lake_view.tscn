@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://dqfweq6u1sfeq" path="res://world/lake_view.gd" id="1_om1fn"]
 [ext_resource type="PackedScene" uid="uid://u2h2eiqd655w" path="res://world/items/zambonie_shed.tscn" id="1_sa1fn"]
 [ext_resource type="PackedScene" uid="uid://d1pimme7bk5xi" path="res://world/ui/ui_canvas_layer.tscn" id="3_dv3jx"]
-[ext_resource type="Texture2D" uid="uid://j574sjcv7v3b" path="res://assets/background.png" id="4_e5y32"]
+[ext_resource type="Resource" uid="uid://dfu06nm5sok7r" path="res://resources/music/game_music.tres" id="4_ciise"]
+[ext_resource type="Texture2D" uid="uid://j574sjcv7v3b" path="res://assets/backgrounds/background.png" id="4_e5y32"]
 [ext_resource type="PackedScene" uid="uid://doe0vjtglsmbv" path="res://entities/icefisher/ice_fisher.tscn" id="4_otm30"]
 [ext_resource type="PackedScene" uid="uid://dikrel8svclv0" path="res://world/cracks/hole_crack.tscn" id="5_sa1fn"]
 [ext_resource type="PackedScene" uid="uid://ig28muqgwaj0" path="res://entities/player/player.tscn" id="6_om1fn"]
@@ -27,8 +28,9 @@ size = Vector2(79, 837)
 script = ExtResource("1_om1fn")
 hole_scene = ExtResource("5_sa1fn")
 ice_fisher_scene = ExtResource("4_otm30")
+game_music = ExtResource("4_ciise")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2022956446]
+[node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=2022956446]
 position = Vector2(576, 324)
 texture = ExtResource("4_e5y32")
 
